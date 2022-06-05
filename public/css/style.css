@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+nav {
+    font-size: 1.1em;
+    position: relative;
+    top: 1%;
+}
+
+nav ul li {
+    margin-right: 10px;
+}
+
+.banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/header-hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    height: 650px;
+    width: auto;
+}
+
+.banner-non-landing {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/header-hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    height: 400px;
+    width: auto;
+}
+
+.heading-1 {
+    font-size: 60px;
+}
+
+.cards-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/cards-hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.news-cards {
+    width: auto;
+    height: 220px;
+}
+
+.carousel-control-prev-icon {
+    width: 60px;
+    height: 60px;
+    background-image: url("../assets/arrow-left.png") !important;
+}
+
+.carousel-control-next-icon {
+    width: 60px;
+    height: 60px;
+    background-image: url("../assets/arrow-right.png") !important;
+}
+
+.map-container-2 {
+    overflow: hidden;
+    padding-bottom: 30%;
+    position: relative;
+    height: 0;
+}
+.map-container-2 iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
