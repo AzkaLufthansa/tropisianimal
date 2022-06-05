@@ -20,7 +20,8 @@ nav ul li {
     background-size: cover;
     background-position: center center;
     color: #fff;
-    height: 650px;
+    /* height: 670px; */
+    height: 100vh;
     width: auto;
 }
 
@@ -32,6 +33,10 @@ nav ul li {
     color: #fff;
     height: 400px;
     width: auto;
+}
+
+.heading {
+    margin-top: 120px;
 }
 
 .heading-1 {
