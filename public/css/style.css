@@ -84,3 +84,11 @@ nav ul li {
     width: 100%;
     position: absolute;
 }
+
+.form-login {
+    margin-top: 150px;
+}
+
+.form-register {
+    margin-top: 100px;
+}
