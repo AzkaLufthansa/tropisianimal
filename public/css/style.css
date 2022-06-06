@@ -23,6 +23,7 @@ nav ul li {
     /* height: 670px; */
     height: 100vh;
     width: auto;
+    background-attachment: fixed;
 }
 
 .banner-non-landing {

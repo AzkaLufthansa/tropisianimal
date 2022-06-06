@@ -13,16 +13,23 @@
                     <a class="nav-link {{ Request::is('tentang') ? 'active' : '' }}" href="/tentang">TENTANG</a>
                 </li>
                 <li class="nav-item mx-sm-4 mx-md-2 mx-lg-4">
-                    <a class="nav-link {{ Request::is('berita') ? 'active' : '' }}" href="/berita">BERITA</a>
+                    <a class="nav-link {{ Request::is('berita*') ? 'active' : '' }}" href="/berita">BERITA</a>
                 </li>
                 <li class="nav-item mx-sm-4 mx-md-2 mx-xl-4">
                     <a class="nav-link {{ Request::is('galeri') ? 'active' : '' }}" href="/galeri">GALERI</a>
                 </li>
-                <li class="nav-item mx-sm-4 mx-md-2 mx-xl-4">
+                <li class="nav-item mx-sm-4 mx-md-  2 mx-xl-4">
                     <a class="nav-link {{ Request::is('kontak') ? 'active' : '' }}" href="/kontak">KONTAK</a>
                 </li>
                 <li class="nav-item mx-sm-4 mx-md-2 mx-xl-4">
-                    <a class="nav-link {{ Request::is('login', 'register') ? 'active' : '' }}" href="/login">LOGIN</a>
+                    @auth()
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="nav-link border-0 bg-transparent" onclick="return confirm('Logout?')">LOGOUT</button>
+                        </form>
+                    @else
+                        <a class="nav-link {{ Request::is('login', 'register') ? 'active' : '' }}" href="/login">LOGIN</a>
+                    @endauth
                 </li>
             </ul>
         </div>

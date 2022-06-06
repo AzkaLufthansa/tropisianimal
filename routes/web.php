@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Berita;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,8 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('index', [
-        'title' => 'Home'
+        'title' => 'Home',
+        'berita' => Berita::latest()->limit(6)->get()
     ]);
 });
 
@@ -29,7 +31,8 @@ Route::get('/kontak', function () {
 
 Route::get('/berita', function () {
     return view('berita', [
-        'title' => 'Berita'
+        'title' => 'Berita',
+        'berita' => Berita::latest()->paginate(7)
     ]);
 });
 
@@ -45,9 +48,20 @@ Route::get('/tentang', function () {
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/berita/{berita:slug}', function(Berita $berita) {
+    return view('single_news', [
+        'title' => 'Single News',
+        'berita' => $berita
+    ]);
+});
 
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+
+Route::get('/dashboard', function() {
+    return view('dashboard.index');
+})->middleware('auth');

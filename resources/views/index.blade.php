@@ -92,66 +92,23 @@
             <h1 class="fw-bolder">Baca Berita Terbaru Kami</h1>
             <h1 class="fw-bolder">Dalam Tropisianimal</h1>
             <div class="row mt-4 text-black">
-                <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
-                    <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
-                        <img src="assets/cards-1.png" class="card-img-top img-fluid news-cards" alt="cards-1" />
-                        <div class="card-body">
-                            <h5 class="card-title">Apa Kabar Kebun Binatang Saat Wabah Covid 19?</h5>
-                            <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias obcaecati necessitatibus in quisquam? Maiores at architecto error</p>
+                @foreach ($berita as $b)
+                    <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
+                        <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
+                            <img src="https://source.unsplash.com/400x220/?animal" class="card-img-top img-fluid news-cards" alt="{{ $b->title }}" />
+                            <div class="card-body">
+                                <a href="/berita/{{ $b->slug }}" class="text-decoration-none text-dark"><h5 class="card-title">{{ $b->title }}</h5></a>
+                                <p class="card-text text-muted">{{ $b->excerpt }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
-                    <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
-                        <img src="assets/cards-2.png" class="card-img-top img-fluid news-cards" alt="cards-1" />
-                        <div class="card-body">
-                            <h5 class="card-title">Anugerah dari Hutan Indonesia</h5>
-                            <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias obcaecati necessitatibus in quisquam? Maiores at architecto error</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
-                    <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
-                        <img src="assets/cards-3.png" class="card-img-top img-fluid news-cards" alt="cards-1" />
-                        <div class="card-body">
-                            <h5 class="card-title">10 Hewan Herbivora Yang Berbahaya</h5>
-                            <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias obcaecati necessitatibus in quisquam? Maiores at architecto error</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
-                    <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
-                        <img src="assets/cards-4.png" class="card-img-top img-fluid news-cards" alt="cards-1" />
-                        <div class="card-body">
-                            <h5 class="card-title">4 Penyakit yang Ditularkan Hewan ke Manusia</h5>
-                            <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias obcaecati necessitatibus in quisquam? Maiores at architecto error</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
-                    <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
-                        <img src="assets/cards-5.png" class="card-img-top img-fluid news-cards" alt="cards-1" />
-                        <div class="card-body">
-                            <h5 class="card-title">Terumbu Karang: Pengertian, Jenis, Sebaran, dan Masalah</h5>
-                            <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias obcaecati necessitatibus in quisquam? Maiores at architecto error</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
-                    <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
-                        <img src="assets/cards-6.png" class="card-img-top img-fluid news-cards" alt="cards-1" />
-                        <div class="card-body">
-                            <h5 class="card-title">Ternyata, Tanduk Rusa Berasal dari Sel Kanker Tulang</h5>
-                            <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias obcaecati necessitatibus in quisquam? Maiores at architecto error</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
     <section id="galeri">
-        <div class="container-fluid pt-3">
+        <div class="container-fluid pt-3 mb-5">
             <div class="container px-3">
                 <h6 class="text-success fw-bold">GALERI</h6>
                 <h1 class="fw-bolder lh-base">Lihat Lebih Banyak Hewan Tropis</h1>
