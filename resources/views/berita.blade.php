@@ -6,11 +6,17 @@
             <div class="container px-2 px-md-0 my-5">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-lg-3 col-5">
-                        <img src="https://source.unsplash.com/200x362/?anima" alt="" class="img-fluid px-md-4 py-md-4" />
+                        @if ($berita[0]->image)
+                            <div style="max-width: 200; overflow: hidden">
+                                <img src="{{ asset('storage/' . $berita[0]->image) }}" alt="{{ $berita[0]->title }}">
+                            </div>
+                        @else
+                            <img src="https://source.unsplash.com/200x362/?animal" alt="" class="img-fluid px-md-4 py-md-4" />
+                        @endif
                     </div>
                     <div class="col-md-6 col-lg-3 col-6">
-                        <img src="https://source.unsplash.com/250x150/?anima" alt="" class="img-fluid pb-4" />
-                        <img src="https://source.unsplash.com/250x200/?anima" alt="" class="img-fluid" />
+                        <img src="https://source.unsplash.com/250x180/?animal" alt="{{ $berita[0]->title }}" class="img-fluid pb-4" />
+                        <img src="https://source.unsplash.com/250x200/?animal" alt="{{ $berita[0]->title }}" class="img-fluid" />
                     </div>
                     <div class="col-md-11 mx-md-2 mx-lg-0 mx-0 col-lg-5 col-12 py-3 py-md-0">
                         <a href="/berita/{{ $berita[0]->slug }}" class="text-decoration-none text-dark"><h1 class="fw-bolder">{{ $berita[0]->title }}</h1></a>
@@ -34,7 +40,11 @@
                     @foreach ($berita->skip(1) as $b)
                         <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
                             <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
-                                <img src="https://source.unsplash.com/400x220/?animal" class="card-img-top img-fluid news-cards" alt="cards-1" />
+                                @if ($b->image)
+                                    <img src="{{ asset('storage/' . $b->image) }}" class="card-img-top img-fluid news-cards" alt="{{ $b->title }}">
+                                @else
+                                    <img src="https://source.unsplash.com/400x220/?animal" class="card-img-top img-fluid news-cards" alt="cards-1" />
+                                @endif
                                 <div class="card-body">
                                     <a href="/berita/{{ $b->slug }}" class="text-decoration-none text-dark"><h5 class="card-title">{{ $b->title }}</h5></a>
                                     <p class="card-text text-muted">{{ $b->excerpt }}</p>

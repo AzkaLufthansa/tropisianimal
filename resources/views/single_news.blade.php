@@ -6,7 +6,11 @@
             <div class="col-md-8">
                 <h1>{{ $berita->title }}</h1>
 
-                <img src="https://source.unsplash.com/1200x600/?animal" alt="{{ $berita->title }}" class="img-fluid my-4">
+                @if ($berita->image)
+                    <img src="{{ asset('storage/'. $berita->image) }}" alt="{{ $berita->title }}" class="img-fluid my-4">
+                @else
+                    <img src="https://source.unsplash.com/1200x600/?animal" alt="{{ $berita->title }}" class="img-fluid my-4">
+                @endif
             
                 {!! $berita->body !!}
             

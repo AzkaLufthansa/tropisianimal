@@ -16,7 +16,13 @@
                     </form>
                 </div>
 
-                <img class="card-img-top mt-3" src="https://source.unsplash.com/1200x600?animal" alt="{{ $berita->title }}" class="img-fluid">
+                @if ($berita->image)
+                    <div style="max-height: 350px; overflow: hidden">
+                        <img class="card-img-top-mt-3" src="{{ asset('storage/' . $berita->image) }}" alt="{{ $berita->title }}">
+                    </div>
+                @else
+                    <img class="card-img-top mt-3" src="https://source.unsplash.com/1200x600?animal" alt="{{ $berita->title }}">
+                @endif
 
                 <article class="mt-4 fs-6">
                     {!! $berita->body !!}

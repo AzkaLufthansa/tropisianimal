@@ -14,6 +14,6 @@ class BeritaSeeder extends Seeder
      */
     public function run()
     {
-        Berita::factory(20)->create();
+        Berita::factory(7)->create();
     }
 }

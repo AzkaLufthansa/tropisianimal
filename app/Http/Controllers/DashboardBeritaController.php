@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Berita;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardBeritaController extends Controller
 {
@@ -17,7 +18,7 @@ class DashboardBeritaController extends Controller
     public function index()
     {
         return view('dashboard.berita.index', [
-            'berita' => Berita::paginate(10)
+            'berita' => Berita::latest()->paginate(10)
         ]);
     }
 
@@ -42,8 +43,13 @@ class DashboardBeritaController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:beritas',
+            'image' => 'image',
             'body' => 'required'
         ]);
+
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('berita_images');
+        }
 
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Berita::create($validatedData);
@@ -90,15 +96,24 @@ class DashboardBeritaController extends Controller
 
         $rules = [
             'title' => 'required|max:255',
+            'image' => 'image',
             'body' => 'required'
         ];
 
+        
         if($request->slug != $berita->slug) {
             $rules['slug'] = 'required|unique:beritas';
         }
-
+        
         $validatedData = $request->validate($rules);
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+
+        if($request->file('image')) {
+            if($berita->image) {
+                Storage::delete($berita->image);
+            }
+            $validatedData['image'] = $request->file('image')->store('berita_images');
+        }
 
         Berita::where('id', $berita->id)
                 ->update($validatedData);
@@ -114,6 +129,9 @@ class DashboardBeritaController extends Controller
     public function destroy($slug)
     {
         $berita = Berita::firstWhere('slug', $slug);
+        if($berita->image) {
+            Storage::delete($berita->image);
+        }
         Berita::destroy($berita->id);
         return redirect('/dashboard/berita')->with('success', 'Berita berhasil dihapus!');
     }
