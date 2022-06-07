@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardBeritaController;
 use App\Models\Berita;
 
 /*
@@ -65,3 +66,6 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 Route::get('/dashboard', function() {
     return view('dashboard.index');
 })->middleware('auth');
+
+Route::get('/dashboard/berita/checkSlug', [DashboardBeritaController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/berita', DashboardBeritaController::class)->middleware('auth');

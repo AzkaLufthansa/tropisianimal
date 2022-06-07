@@ -18,7 +18,7 @@
                             {{ $berita[0]->excerpt }}
                         </p>
                         <div class="d-grid col-10 col-lg-6 col-md-4 text-center">
-                            <button class="btn btn-success">Baca Selengkapnya ></button>
+                            <a href="/berita/{{ $berita[0]->slug }}" class="btn btn-success">Baca Selengkapnya ></a>
                         </div>
                     </div>
                 </div>
