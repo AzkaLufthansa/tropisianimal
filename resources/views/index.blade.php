@@ -118,78 +118,17 @@
                 <div class="row mx-auto my-auto justify-content-center">
                     <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="assets/carousel-4.png" class="img-fluid d-block w-100" />
+                            @foreach ($galeri as $g)
+                                <div class="carousel-item active">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img src="{{ asset('storage/' . $g->gambar) }}" alt="{{ $g->nama_gambar }}" class="img-fluid d-block w-100" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="assets/carousel-3.png" class="img-fluid d-block w-100" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="assets/carousel-6.png" class="img-fluid d-block w-100" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="assets/carousel-1.png" class="img-fluid d-block w-100" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="assets/carousel-2.png" class="img-fluid d-block w-100" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="assets/carousel-5.png" class="img-fluid d-block w-100" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="assets/carousel-7.png" class="img-fluid d-block w-100" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="assets/carousel-8.png" class="img-fluid d-block w-100" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -27,32 +27,14 @@
     <section id="galeri" class="container-fluid">
         <div class="container pb-5">
             <div class="row pb-5">
-                <div class="col-6 pb-5 pb-md-0 col-md-3">
-                    <img src="assets/cards/cards-1.png" alt="" class="img-fluid" />
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="assets/cards/cards-2.png" alt="" class="img-fluid" />
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="assets/cards/cards-3.png" alt="" class="img-fluid" />
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="assets/cards/cards-4.png" alt="" class="img-fluid" />
-                </div>
+                @foreach ($galeri as $g)
+                    <div class="col-6 pb-5 pb-md-0 col-md-3">
+                        <img src="{{ asset('storage/' . $g->gambar) }}" alt="{{ $g->nama_gambar }}}}" class="img-fluid mb-4" />
+                    </div>
+                @endforeach
             </div>
-            <div class="row pt-2 pt-md-0">
-                <div class="col-6 pb-5 pb-md-0 col-md-3">
-                    <img src="assets/cards/cards-5.png" alt="" class="img-fluid" />
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="assets/cards/cards-7.png" alt="" class="img-fluid" />
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="assets/cards/cards-6.png" alt="" class="img-fluid" />
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="assets/cards/cards-8.png" alt="" class="img-fluid" />
-                </div>
+            <div class="d-flex justify-content-end">
+                {{ $galeri->links() }}
             </div>
         </div>
     </section>

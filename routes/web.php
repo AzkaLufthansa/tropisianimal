@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardBeritaController;
+use App\Http\Controllers\DashboardGaleriController;
 use App\Models\Berita;
+use App\Models\Galeri;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,8 @@ use App\Models\Berita;
 Route::get('/', function () {
     return view('index', [
         'title' => 'Home',
-        'berita' => Berita::latest()->limit(6)->get()
+        'berita' => Berita::latest()->limit(6)->get(),
+        'galeri' => Galeri::latest()->get()
     ]);
 });
 
@@ -39,7 +42,8 @@ Route::get('/berita', function () {
 
 Route::get('/galeri', function () {
     return view('galeri', [
-        'title' => 'Galeri'
+        'title' => 'Galeri',
+        'galeri' => Galeri::latest()->paginate(9)
     ]);
 });
 
@@ -69,3 +73,5 @@ Route::get('/dashboard', function() {
 
 Route::get('/dashboard/berita/checkSlug', [DashboardBeritaController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/berita', DashboardBeritaController::class)->middleware('auth');
+
+Route::resource('/dashboard/galeri', DashboardGaleriController::class)->middleware('auth');
