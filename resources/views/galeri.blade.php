@@ -27,11 +27,17 @@
     <section id="galeri" class="container-fluid">
         <div class="container pb-5">
             <div class="row pb-5">
-                @foreach ($galeri as $g)
-                    <div class="col-6 pb-5 pb-md-0 col-md-3">
-                        <img src="{{ asset('storage/' . $g->gambar) }}" alt="{{ $g->nama_gambar }}}}" class="img-fluid mb-4" />
+                @if ($galeri->count())
+                    @foreach ($galeri as $g)
+                        <div class="col-6 pb-5 pb-md-0 col-md-3">
+                            <img src="{{ asset('storage/' . $g->gambar) }}" alt="{{ $g->nama_gambar }}" class="img-fluid mb-4" />
+                        </div>
+                    @endforeach
+                @else
+                    <div class="alert alert-dark text-center" role="alert">
+                        Galeri masih kosong!
                     </div>
-                @endforeach
+                @endif
             </div>
             <div class="d-flex justify-content-end">
                 {{ $galeri->links() }}

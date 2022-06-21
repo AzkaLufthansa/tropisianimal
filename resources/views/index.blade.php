@@ -92,17 +92,23 @@
             <h1 class="fw-bolder">Baca Berita Terbaru Kami</h1>
             <h1 class="fw-bolder">Dalam Tropisianimal</h1>
             <div class="row mt-4 text-black">
-                @foreach ($berita as $b)
-                    <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
-                        <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
-                            <img src="https://source.unsplash.com/400x220/?animal" class="card-img-top img-fluid news-cards" alt="{{ $b->title }}" />
-                            <div class="card-body">
-                                <a href="/berita/{{ $b->slug }}" class="text-decoration-none text-dark"><h5 class="card-title">{{ $b->title }}</h5></a>
-                                <p class="card-text text-muted">{{ $b->excerpt }}</p>
+                @if($berita->count())
+                    @foreach ($berita as $b)
+                        <div class="col-12 col-md-6 col-lg-4 mb-0 mb-md-4 d-flex d-md-blok justify-content-center justify-content-md-start">
+                            <div class="card text-center bg-dark bg-opacity-10" style="width: 25rem">
+                                <img src="https://source.unsplash.com/400x220/?animal" class="card-img-top img-fluid news-cards" alt="{{ $b->title }}" />
+                                <div class="card-body">
+                                    <a href="/berita/{{ $b->slug }}" class="text-decoration-none text-dark"><h5 class="card-title">{{ $b->title }}</h5></a>
+                                    <p class="card-text text-muted">{{ $b->excerpt }}</p>
+                                </div>
                             </div>
                         </div>
+                    @endforeach
+                @else
+                    <div class="alert alert-dark text-center" role="alert">
+                        Berita masih kosong!
                     </div>
-                @endforeach
+                @endif
             </div>
         </div>
     </section>
@@ -118,24 +124,30 @@
                 <div class="row mx-auto my-auto justify-content-center">
                     <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner" role="listbox">
-                            @foreach ($galeri as $g)
-                                <div class="carousel-item active">
-                                    <div class="col-md-3">
-                                        <div class="card">
-                                            <div class="card-img">
-                                                <img src="{{ asset('storage/' . $g->gambar) }}" alt="{{ $g->nama_gambar }}" class="img-fluid d-block w-100" />
+                            @if ($galeri->count())
+                                @foreach ($galeri as $g)
+                                    <div class="carousel-item active">
+                                        <div class="col-md-3">
+                                            <div class="card">
+                                                <div class="card-img">
+                                                    <img src="{{ asset('storage/' . $g->gambar) }}" alt="{{ $g->nama_gambar }}" class="img-fluid d-block w-100" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                @endforeach
+                                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                </a>
+                                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </a>
+                            @else
+                                <div class="alert alert-dark" role="alert">
+                                    Gambar masih kosong!
                                 </div>
-                            @endforeach
+                            @endif
                         </div>
-                        <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        </a>
-                        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        </a>
                     </div>
                 </div>
             </div>
